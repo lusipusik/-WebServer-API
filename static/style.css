@@ -1,0 +1,103 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #f0f2f5;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+.wheel-container {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.wheel {
+    width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: conic-gradient(
+    red 0% 20%,
+    blue 20% 50%,
+    green 50% 100%
+  );
+}
+
+#spinBtn {
+    padding: 10px 20px;
+    background: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+#result {
+    text-align: center;
+    font-size: 24px;
+    margin: 20px 0;
+    min-height: 30px;
+}
+
+.controls {
+    margin-top: 30px;
+}
+
+input, button {
+    padding: 8px;
+    margin: 5px;
+}
+
+#itemsList {
+    list-style: none;
+    padding: 0;
+}
+
+#itemsList li {
+    background: #eee;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.removeBtn {
+    background: #ff4444;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+}
+.history {
+    margin-top: 30px;
+    padding: 15px;
+    background: #f9f9f9;
+    border-radius: 5px;
+}
+
+#historyList {
+    list-style: none;
+    padding: 0;
+}
+
+#historyList li {
+    padding: 5px 0;
+    border-bottom: 1px solid #ddd;
+}

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Колесо Фортуны</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>🎡 Колесо Фортуны</h1>
+
+        <div class="wheel-container">
+            <img src="/static/wheel.png" id="wheel" class="wheel">
+            <button id="spinBtn">Крутить!</button>
+        </div>
+
+        <div id="result"></div>
+
+        <div class="history">
+            <h2>Последние выигрыши</h2>
+            <ul id="historyList"></ul>
+        </div>
+
+        <div class="controls">
+            <h2>Управление элементами</h2>
+            <input type="text" id="newItemText" placeholder="Название">
+            <input type="number" id="newItemChance" placeholder="Шанс (%)" min="1" max="100">
+            <button id="addBtn">Добавить</button>
+
+            <ul id="itemsList">
+                {% for item in items %}
+                <li>
+                    {{ item.text }} ({{ item.chance }}%)
+                    <button class="removeBtn" data-text="{{ item.text }}">×</button>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <script src="/static/script.js"></script>
+</body>
+</html>
