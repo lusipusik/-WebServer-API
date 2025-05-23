@@ -135,11 +135,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // Рассчитываем угол для остановки
                 const totalChance = items.reduce((sum, item) => sum + item.chance, 0);
-                const startAngle = (currentChance / totalChance) * 360;
+                const sectorStartAngle = (currentChance / totalChance) * 360;
+                const sectorWidth = (selectedItem.chance / totalChance) * 360;
+                const sectorMiddleAngle = sectorStartAngle + (sectorWidth / 2);
                 const sectorAngle = (selectedItem.chance / totalChance) * 360;
 
-                // Угол остановки - середина выбранного сектора минус 90 градусов (чтобы стрелка указывала на середину)
-                const stopAngle = 1800 + startAngle + (sectorAngle / 2) - 90;
+                const stopAngle = 450 + sectorMiddleAngle - 90;
 
                 // Сброс и анимация
                 wheel.style.transition = 'none';
