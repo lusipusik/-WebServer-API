@@ -118,11 +118,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
 
+            // Новый расчет угла с учетом положения стрелки (90 градусов сверху)
             const sectorAngle = 360 / totalChance * items[selectedIndex].chance;
-            const degrees = 1800 + (360 / items.length * selectedIndex) + (Math.random() * sectorAngle);
+            const degrees = 1800 + (360 / totalChance * current) - (sectorAngle / 2) - 90;
 
             wheel.style.transition = 'transform 4s cubic-bezier(0.36, 0.07, 0.19, 0.97)';
-            wheel.style.transform = `rotate(${degrees}deg)`;
+            wheel.style.transform = `rotate(${-degrees}deg)`; // Отрицательное значение для правильного направления
 
             setTimeout(() => {
                 fetch('/spin', { method: 'POST' })
