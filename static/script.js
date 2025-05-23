@@ -21,6 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const totalChance = items.reduce((sum, item) => sum + item.chance, 0);
         let currentPercent = 0;
         const colors = ['#FF5733', '#33FF57', '#3357FF', '#F3FF33', '#FF33F3'];
+        const radius = 90; // Оптимальный радиус для отображения
 
         const gradientParts = items.map((item, i) => {
             const percent = (item.chance / totalChance) * 100;
@@ -30,8 +31,21 @@ document.addEventListener('DOMContentLoaded', () => {
             const label = document.createElement('div');
             label.className = 'wheel-label';
             label.textContent = item.text;
-            const angle = (currentPercent + percent / 2) * 3.6;
-            label.style.transform = `rotate(${angle}deg) translateY(-100px) rotate(${angle > 180 ? 180 : 0}deg)`;
+            const angle = (currentPercent + percent / 2) * 3.6; // Центральный угол сектора
+
+            // Правильный поворот текста (последний символ к центру)
+            label.style.transform = `
+                rotate(${angle}deg)
+                translateY(-${radius}px)
+                rotate(${angle < 180 ? 90 : -90}deg)
+            `;
+
+            // Оптимальные настройки отображения
+            label.style.width = `${Math.min(percent * 2.5, 120)}px`;
+            label.style.left = `50%`;
+            label.style.marginLeft = `-${Math.min(percent * 1.25, 60)}px`;
+            label.style.fontSize = `${Math.max(10, Math.min(14, percent))}px`;
+
             wheel.appendChild(label);
 
             currentPercent += percent;

@@ -57,15 +57,19 @@ h1 {
 
 .wheel-label {
     position: absolute;
-    width: 80px;
-    text-align: center;
     color: white;
     font-weight: bold;
-    text-shadow: 1px 1px 2px black;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
     transform-origin: center;
-    left: 50%;
-    margin-left: -40px;
-    top: 20px;
+    top: 50%;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    pointer-events: none;
+    transform-style: preserve-3d;
 }
 
 #spinBtn {
