@@ -18,7 +18,7 @@ def init_db():
     )
     ''')
     if cursor.execute("SELECT COUNT(*) FROM wheel_items").fetchone()[0] == 0:
-        default_items = [("Пицца", 20), ("Кофе", 30), ("Книга", 10), ("Ничего", 40)]
+        default_items = [("Перекус", 20), ("Настолка", 30), ("Почитать книги", 10), ("Поспать", 40)]
         cursor.executemany("INSERT INTO wheel_items (text, chance) VALUES (?, ?)", default_items)
     conn.commit()
     conn.close()

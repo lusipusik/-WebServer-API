@@ -1,3 +1,2 @@
 flask
 requests
-python-dotenv  # Если используете .env

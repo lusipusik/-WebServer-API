@@ -113,13 +113,11 @@ document.addEventListener('DOMContentLoaded', () => {
         isSpinning = true;
         resultDiv.textContent = '';
 
-        // Сначала запрашиваем результат у сервера
         fetch('/spin', { method: 'POST' })
             .then(response => response.json())
             .then(data => {
                 const result = data.result;
 
-                // Находим выбранный элемент и его позицию
                 let currentChance = 0;
                 let selectedIndex = 0;
                 let selectedItem = null;
@@ -133,16 +131,13 @@ document.addEventListener('DOMContentLoaded', () => {
                     currentChance += items[i].chance;
                 }
 
-                // Рассчитываем угол для остановки
                 const totalChance = items.reduce((sum, item) => sum + item.chance, 0);
                 const sectorStartAngle = (currentChance / totalChance) * 360;
                 const sectorWidth = (selectedItem.chance / totalChance) * 360;
                 const sectorMiddleAngle = sectorStartAngle + (sectorWidth / 2);
-                const sectorAngle = (selectedItem.chance / totalChance) * 360;
 
-                const stopAngle = 450 + sectorMiddleAngle - 90;
+                const stopAngle = 2970 + sectorMiddleAngle - 90;
 
-                // Сброс и анимация
                 wheel.style.transition = 'none';
                 wheel.style.transform = 'rotate(0deg)';
 
